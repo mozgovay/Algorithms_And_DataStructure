@@ -6,9 +6,9 @@ echo "9" > 3.txt
 cd ..
 
 # Тестируем bash
-./solution.sh test 10 result1.out
+./lb21.sh test 10 result1.out
 echo "Bash: $(cat result1.out)"
 
 # Тестируем python
-python3 solution.py test 10 result2.out
+python3 lb21.py test 10 result2.out
 echo "Python: $(cat result2.out)"
