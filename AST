@@ -124,19 +124,16 @@ Node* parseExpression(const char* expr) {
     return root;
 }
 
-// Упрощение: удаление произведений с нулём (пуль = 0)
 Node* simplify(Node* node) {
     if (!node) return NULL;
     
     node->left = simplify(node->left);
     node->right = simplify(node->right);
-    
-    // Если операция умножения
+
     if (node->type == OP && node->op == '*') {
         // Проверяем, есть ли 0 в левом или правом поддереве
         if ((node->left && node->left->type == NUM && node->left->value == 0) ||
             (node->right && node->right->type == NUM && node->right->value == 0)) {
-            // Всё произведение заменяем на 0
             freeTree(node->left);
             freeTree(node->right);
             node->type = NUM;
