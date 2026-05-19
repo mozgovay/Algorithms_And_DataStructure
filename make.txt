@@ -1,0 +1,19 @@
+CC = gcc
+CFLAGS = -Wall -Wextra
+
+all: program
+
+program: main.o UJDT.o
+	$(CC) $(CFLAGS) -o program main.o UJDT.o
+
+main.o: main.c UJDT.h
+	$(CC) $(CFLAGS) -c main.c
+
+UJDT.o: UJDT.c UJDT.h
+	$(CC) $(CFLAGS) -c UJDT.c
+
+clean:
+	rm -f *.o program
+
+run: program
+	./program
